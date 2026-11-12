@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Field geometry and bounce rule</title>
+  <defs>
+    <marker id="w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e6ebf7"/></marker>
+    <marker id="d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8c99b8"/></marker>
+  </defs>
+  <rect width="1200" height="660" rx="24" fill="#0d1221"/>
+  <text x="40" y="58" fill="#e6ebf7" font-size="28" font-weight="800">Geometry — an equilateral field and a random rebound</text>
+  <text x="40" y="88" fill="#8c99b8" font-size="16">All values are in logical units of the 600 × 820 drawing area (1 unit ≈ 1 CSS px on a 600-px-wide screen).</text>
+
+  <!-- Triangle: centre (330,400), R = 230 (scaled from 290) -->
+  <g transform="translate(330 400)">
+    <circle r="230" fill="none" stroke="#334061" stroke-dasharray="3 6"/>
+    <circle r="115" fill="none" stroke="#334061" stroke-dasharray="3 6"/>
+    <polygon points="-199.2,115 199.2,115 0,-230" fill="#111831"/>
+    <line x1="-199.2" y1="115" x2="199.2" y2="115" stroke="#40d9f2" stroke-width="4"/>
+    <line x1="199.2" y1="115" x2="0" y2="-230" stroke="#ff8c33" stroke-width="4"/>
+    <line x1="0" y1="-230" x2="-199.2" y2="115" stroke="#c58bff" stroke-width="4"/>
+    <!-- radii -->
+    <line x1="0" y1="0" x2="0" y2="-230" stroke="#8c99b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="8" y="-60" fill="#8c99b8" font-size="13">R = 290</text>
+    <line x1="0" y1="0" x2="0" y2="115" stroke="#e6ebf7" stroke-width="1.5"/>
+    <text x="8" y="92" fill="#e6ebf7" font-size="13">R/2 = 145</text>
+    <circle r="4" fill="#e6ebf7"/>
+    <!-- normal on bottom side -->
+    <line x1="0" y1="115" x2="0" y2="175" stroke="#40d9f2" stroke-width="2.5" marker-end="url(#w)"/>
+    <text x="10" y="170" fill="#40d9f2" font-size="14" font-weight="700">n₀</text>
+    <line x1="0" y1="115" x2="60" y2="115" stroke="#40d9f2" stroke-width="2.5" marker-end="url(#w)" transform="translate(0 0)"/>
+    <text x="64" y="138" fill="#40d9f2" font-size="14" font-weight="700">t₀</text>
+    <!-- paddle -->
+    <rect x="-90" y="103" width="76" height="10" rx="3" fill="#40d9f2"/>
+    <text x="-52" y="135" text-anchor="middle" fill="#40d9f2" font-size="12">paddle 96 × 12</text>
+    <!-- ball and random targets -->
+    <circle cx="-52" cy="92" r="0" fill="#fff"/>
+    <circle cx="-30" cy="70" r="7" fill="#fff"/>
+    <!-- aim window on orange side 18%-82% -->
+    <line x1="163.3" y1="52.9" x2="35.9" y2="-167.9" stroke="#ff8c33" stroke-width="12" stroke-opacity="0.3" stroke-linecap="round"/>
+    <line x1="-35.9" y1="-167.9" x2="-163.3" y2="52.9" stroke="#c58bff" stroke-width="12" stroke-opacity="0.3" stroke-linecap="round"/>
+    <path d="M-30 70 L 120 -22" stroke="#e6ebf7" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#w)"/>
+    <path d="M-30 70 L -110 -38" stroke="#e6ebf7" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#w)"/>
+    <text x="55" y="42" fill="#e6ebf7" font-size="13">either …</text>
+    <text x="-150" y="42" fill="#e6ebf7" font-size="13">… or</text>
+    <!-- side label -->
+    <text x="0" y="-250" text-anchor="middle" fill="#8c99b8" font-size="13">side length = R·√3 ≈ 502</text>
+  </g>
+
+  <!-- Rule panel -->
+  <g font-size="15">
+    <rect x="640" y="120" width="520" height="500" rx="16" fill="#161d33" stroke="#334061" stroke-width="2"/>
+    <text x="664" y="156" fill="#e6ebf7" font-size="18" font-weight="700">Rules encoded in stepBall() / randomBounce()</text>
+
+    <text x="664" y="196" fill="#40d9f2" font-weight="700">1 · Each player owns one side</text>
+    <text x="664" y="218" fill="#8c99b8" font-size="14">Every client rotates the world so its own side is at the bottom;</text>
+    <text x="664" y="238" fill="#8c99b8" font-size="14">the physics itself never rotates.</text>
+
+    <text x="664" y="276" fill="#ff8c33" font-weight="700">2 · A hit never returns the ball deterministically</text>
+    <text x="664" y="298" fill="#8c99b8" font-size="14">After a paddle or wall contact the ball is re-aimed at a random</text>
+    <text x="664" y="318" fill="#8c99b8" font-size="14">point between 18 % and 82 % of one of the two other sides</text>
+    <text x="664" y="338" fill="#8c99b8" font-size="14">(shots shorter than 140 u, or back toward the sender, are re-drawn).</text>
+
+    <text x="664" y="376" fill="#c58bff" font-weight="700">3 · Speed grows, then saturates</text>
+    <text x="664" y="398" fill="#8c99b8" font-size="14">serve 260 u/s · ×1.05 per contact · capped at 760 u/s</text>
+    <text x="664" y="418" fill="#8c99b8" font-size="14">→ cap reached after ⌈ln(760/260)/ln 1.05⌉ = 22 contacts.</text>
+
+    <text x="664" y="456" fill="#e6ebf7" font-weight="700">4 · No tunnelling</text>
+    <text x="664" y="478" fill="#8c99b8" font-size="14">The ball moves in sub-steps of at most BALL_R/2 = 4 u,</text>
+    <text x="664" y="498" fill="#8c99b8" font-size="14">so even at 760 u/s it cannot skip through a 12-u paddle.</text>
+
+    <text x="664" y="536" fill="#e6ebf7" font-weight="700">5 · Lives and walls</text>
+    <text x="664" y="558" fill="#8c99b8" font-size="14">5 lives each. At 0 the side becomes a solid wall.</text>
+    <text x="664" y="578" fill="#8c99b8" font-size="14">Last player with lives wins. CPU paddles move at 330 u/s</text>
+    <text x="664" y="598" fill="#8c99b8" font-size="14">toward the predicted impact ± a random error of up to 30 u.</text>
+  </g>
+</svg>

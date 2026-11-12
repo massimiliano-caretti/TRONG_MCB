@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Game state machine</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8c99b8"/></marker>
+  </defs>
+  <rect width="1200" height="420" rx="24" fill="#0d1221"/>
+  <text x="40" y="58" fill="#e6ebf7" font-size="28" font-weight="800">State machine — g.state</text>
+  <text x="40" y="88" fill="#8c99b8" font-size="16">START/STOP (or S, Space, Enter) toggles. A paused rally resumes straight to "playing". RESET (R) restores full lives.</text>
+
+  <g font-size="16" font-weight="700" text-anchor="middle">
+    <rect x="60" y="180" width="190" height="70" rx="35" fill="#1d2747" stroke="#e6ebf7" stroke-width="2"/>
+    <text x="155" y="221" fill="#e6ebf7">stopped</text>
+    <rect x="370" y="180" width="190" height="70" rx="35" fill="#1d2747" stroke="#ff8c33" stroke-width="2"/>
+    <text x="465" y="214" fill="#ff8c33">countdown</text>
+    <text x="465" y="234" fill="#8c99b8" font-size="12" font-weight="400">1.5 s</text>
+    <rect x="680" y="180" width="190" height="70" rx="35" fill="#1d2747" stroke="#40d9f2" stroke-width="2"/>
+    <text x="775" y="221" fill="#40d9f2">playing</text>
+    <rect x="990" y="180" width="160" height="70" rx="35" fill="#1d2747" stroke="#c58bff" stroke-width="2"/>
+    <text x="1070" y="221" fill="#c58bff">over</text>
+  </g>
+
+  <g fill="none" stroke="#8c99b8" stroke-width="2" font-size="13">
+    <path d="M250 205 L 368 205" marker-end="url(#a)"/>
+    <path d="M560 205 L 678 205" marker-end="url(#a)"/>
+    <path d="M870 215 L 988 215" marker-end="url(#a)"/>
+    <!-- life lost loop -->
+    <path d="M740 250 C 700 330, 520 330, 480 252" marker-end="url(#a)"/>
+    <!-- stop -->
+    <path d="M700 180 C 600 110, 260 110, 175 178" marker-end="url(#a)"/>
+    <path d="M400 245 C 340 290, 240 290, 190 252" marker-end="url(#a)"/>
+    <!-- rematch -->
+    <path d="M1070 250 C 1060 390, 520 390, 450 252" marker-end="url(#a)"/>
+    <!-- resume -->
+    
+  </g>
+  <g font-size="13" fill="#8c99b8" text-anchor="middle">
+    <text x="309" y="196">START</text>
+    <text x="619" y="196">serve()</text>
+    <text x="929" y="206">≤ 1 alive</text>
+    <text x="610" y="320">life lost, ≥ 2 alive</text>
+    <text x="300" y="300">STOP</text>
+    <text x="440" y="122">STOP</text>
+    
+    <text x="760" y="378">START → rematch (new game, paddles kept)</text>
+  </g>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 400" width="1360" height="400">
+  <title>TRONG_MCB</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#18213f"/>
+      <stop offset="1" stop-color="#090d1a"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textglow" x="-10%" y="-30%" width="120%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1360" height="400" rx="60" fill="url(#bg)"/>
+
+  <!-- Icona (triangolo, racchette, pallina) ridotta a 320 px -->
+  <g transform="translate(20 30) scale(0.66)">
+    <g stroke-linecap="round" stroke-width="13" fill="none" opacity="0.7">
+      <line x1="108.8" y1="365" x2="403.2" y2="365" stroke="#40d9f2"/>
+      <line x1="403.2" y1="365" x2="256"   y2="110" stroke="#ff8c33"/>
+      <line x1="256"   y1="110" x2="108.8" y2="365" stroke="#c58bff"/>
+    </g>
+    <g stroke-linecap="round" stroke-width="24" filter="url(#glow)">
+      <line x1="236" y1="341" x2="324" y2="341" stroke="#40d9f2"/>
+      <line x1="305" y1="235" x2="349" y2="311" stroke="#ff8c33"/>
+      <line x1="207" y1="235" x2="163" y2="311" stroke="#c58bff"/>
+    </g>
+    <circle cx="246" cy="306" r="9"  fill="#ffffff" opacity="0.18"/>
+    <circle cx="256" cy="283" r="13" fill="#ffffff" opacity="0.35"/>
+    <circle cx="268" cy="255" r="20" fill="#ffffff" filter="url(#glow)"/>
+  </g>
+
+  <!-- Scritta: TR  (pallina al posto della O)  NG -->
+  <g font-family="'Arial Black', 'Helvetica Neue', Arial, system-ui, sans-serif" font-weight="900" font-size="190" filter="url(#textglow)">
+    <text x="622" y="268" text-anchor="end" fill="#40d9f2" letter-spacing="6">TR</text>
+    <text x="842" y="268" text-anchor="start" fill="#c58bff" letter-spacing="6">NG</text>
+    <text x="1136" y="268" text-anchor="start" fill="#8c99b8" font-size="64" letter-spacing="3">_MCB</text>
+  </g>
+  <!-- La "O" è un anello arancione -->
+  <circle cx="740" cy="200" r="70" fill="none" stroke="#ff8c33" stroke-width="36" filter="url(#glow)"/>
+
+  <text x="780" y="345" text-anchor="middle" font-family="system-ui, 'Segoe UI', Roboto, sans-serif" font-size="30" font-weight="600" fill="#8c99b8" letter-spacing="10">TRE GIOCATORI · UNA PALLINA</text>
+</svg>

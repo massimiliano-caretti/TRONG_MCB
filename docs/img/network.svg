@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="1200" height="780" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Network topology and protocol</title>
+  <defs>
+    <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ff8c33"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#40d9f2"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8c99b8"/></marker>
+  </defs>
+  <rect width="1200" height="780" rx="24" fill="#0d1221"/>
+  <text x="40" y="58" fill="#e6ebf7" font-size="28" font-weight="800">Network — a star with the host at the centre</text>
+  <text x="40" y="88" fill="#8c99b8" font-size="16">WebRTC data channels (JSON, reliable). Third-party servers are used only to find each other and, if needed, to relay.</text>
+
+  <!-- third-party band -->
+  <rect x="40" y="112" width="1120" height="92" rx="14" fill="#161d33" stroke="#334061" stroke-dasharray="6 5" stroke-width="2"/>
+  <text x="60" y="136" fill="#8c99b8" font-size="12" letter-spacing="2">THIRD-PARTY INFRASTRUCTURE (not operated by this project)</text>
+  <g font-size="14">
+    <rect x="70" y="148" width="320" height="44" rx="10" fill="#1d2747" stroke="#334061"/>
+    <text x="230" y="168" text-anchor="middle" fill="#e6ebf7" font-weight="700">PeerJS signalling · 0.peerjs.com</text>
+    <text x="230" y="184" text-anchor="middle" fill="#8c99b8" font-size="12">exchanges connection offers (setup only)</text>
+    <rect x="440" y="148" width="320" height="44" rx="10" fill="#1d2747" stroke="#334061"/>
+    <text x="600" y="168" text-anchor="middle" fill="#e6ebf7" font-weight="700">STUN · stun.l.google.com</text>
+    <text x="600" y="184" text-anchor="middle" fill="#8c99b8" font-size="12">tells each phone its public address</text>
+    <rect x="810" y="148" width="320" height="44" rx="10" fill="#1d2747" stroke="#334061"/>
+    <text x="970" y="168" text-anchor="middle" fill="#e6ebf7" font-weight="700">TURN · eu-0 / us-0.turn.peerjs.com</text>
+    <text x="970" y="184" text-anchor="middle" fill="#8c99b8" font-size="12">relays traffic when direct fails</text>
+  </g>
+
+  <!-- phones -->
+  <g font-size="14">
+    <rect x="490" y="262" width="220" height="130" rx="22" fill="#1d2747" stroke="#40d9f2" stroke-width="3"/>
+    <text x="600" y="294" text-anchor="middle" fill="#40d9f2" font-weight="800" font-size="18">HOST</text>
+    <text x="600" y="318" text-anchor="middle" fill="#e6ebf7" font-size="13">peer id: trongmcb-v1-K7QM</text>
+    <text x="600" y="340" text-anchor="middle" fill="#8c99b8" font-size="12">runs the physics + CPU seats</text>
+    <text x="600" y="358" text-anchor="middle" fill="#8c99b8" font-size="12">decides hits, lives, winner</text>
+    <text x="600" y="376" text-anchor="middle" fill="#8c99b8" font-size="12">seat 0</text>
+
+    <rect x="120" y="440" width="220" height="110" rx="22" fill="#1d2747" stroke="#ff8c33" stroke-width="3"/>
+    <text x="230" y="474" text-anchor="middle" fill="#ff8c33" font-weight="800" font-size="18">GUEST</text>
+    <text x="230" y="498" text-anchor="middle" fill="#8c99b8" font-size="12">seat 1 · random peer id</text>
+    <text x="230" y="516" text-anchor="middle" fill="#8c99b8" font-size="12">draws snapshots,</text>
+    <text x="230" y="534" text-anchor="middle" fill="#8c99b8" font-size="12">sends own paddle</text>
+
+    <rect x="860" y="440" width="220" height="110" rx="22" fill="#1d2747" stroke="#c58bff" stroke-width="3"/>
+    <text x="970" y="474" text-anchor="middle" fill="#c58bff" font-weight="800" font-size="18">GUEST</text>
+    <text x="970" y="498" text-anchor="middle" fill="#8c99b8" font-size="12">seat 2 · random peer id</text>
+    <text x="970" y="516" text-anchor="middle" fill="#8c99b8" font-size="12">draws snapshots,</text>
+    <text x="970" y="534" text-anchor="middle" fill="#8c99b8" font-size="12">sends own paddle</text>
+  </g>
+
+  <!-- setup lines -->
+  <g stroke="#8c99b8" stroke-width="1.4" stroke-dasharray="4 4" fill="none">
+    <path d="M560 262 L 300 192"/><path d="M230 440 L 230 192"/><path d="M970 440 L 970 192"/>
+    <path d="M600 262 L 600 192"/>
+  </g>
+
+  <!-- data channels -->
+  <path d="M500 380 L 340 470" stroke="#40d9f2" stroke-width="3" fill="none" marker-end="url(#b)"/>
+  <path d="M330 500 L 495 395" stroke="#ff8c33" stroke-width="3" fill="none" marker-end="url(#o)"/>
+  <path d="M700 380 L 860 470" stroke="#40d9f2" stroke-width="3" fill="none" marker-end="url(#b)"/>
+  <path d="M870 500 L 705 395" stroke="#c58bff" stroke-width="3" fill="none" marker-end="url(#o)"/>
+
+  <!-- protocol legend -->
+  <g font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+    <rect x="40" y="580" width="1120" height="150" rx="14" fill="#161d33" stroke="#334061" stroke-width="2"/>
+    <text x="70" y="612" fill="#40d9f2" font-weight="700">host → guest</text>
+    <text x="70" y="640" fill="#e6ebf7">{t:"hello", seat}</text><text x="300" y="640" fill="#8c99b8">seat assigned</text>
+    <text x="70" y="664" fill="#e6ebf7">{t:"full"}</text><text x="300" y="664" fill="#8c99b8">3 players already</text>
+    <text x="70" y="688" fill="#e6ebf7">{t:"s", st,b,p,l,…}</text><text x="300" y="688" fill="#8c99b8">full snapshot · 50 Hz</text>
+    <text x="620" y="612" fill="#ff8c33" font-weight="700">guest → host</text>
+    <text x="620" y="640" fill="#e6ebf7">{t:"n", name}</text><text x="830" y="640" fill="#8c99b8">once · re-sanitised by host</text>
+    <text x="620" y="664" fill="#e6ebf7">{t:"p", s}</text><text x="830" y="664" fill="#8c99b8">paddle · 50 Hz · clamped</text>
+    <text x="620" y="688" fill="#e6ebf7">{t:"c", c}</text><text x="830" y="688" fill="#8c99b8">"toggle" | "reset"</text>
+  </g>
+  <text x="40" y="758" fill="#8c99b8" font-size="13">Game code: 4 characters from a 32-symbol alphabet → 32⁴ = 1 048 576 codes. Codes are not secret: anyone who knows a code can take a free seat.</text>
+</svg>
