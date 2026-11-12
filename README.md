@@ -39,8 +39,9 @@
 
 | | |
 |---|---|
-| **What you get** | One file, `trong_mcb.html` (≈ 188 KB). Open it in a browser and play. |
+| **What you get** | One file, `trong_mcb.html` (≈ 187 KB). Open it in a browser and play. |
 | **Who plays** | 1 human vs 2 CPU · 2 humans + 1 CPU · 3 humans. Empty seats are always filled by the CPU. |
+| **Computer skill** | Three levels — Easy, Normal, Hard — measured, not guessed (§3.2). |
 | **Where it runs** | Any modern browser with Canvas 2D; online play also needs WebRTC. Designed for phones held upright; works with a keyboard on desktop. |
 | **Network needed?** | No for single player. Yes for online play (to find each other; the game data then flows directly between phones when possible). |
 | **Languages** | Italian and English, chosen with a flag every time the game opens. |
@@ -91,11 +92,39 @@ Upload the single file to any static host (GitHub Pages, Netlify, an S3 bucket, 
 > **Example.** On a train with no signal: open the file → 🇬🇧 → name `Ada` → **Play against the computer** → **START**.
 > You defend the bottom side; the orange and purple sides are CPU players.
 
-The CPU predicts where the ball will cross its side and moves there at 330 u/s, with a random aiming error of up to ±30 u that is re-drawn at every bounce, so it is beatable.
+The CPU predicts where the ball will cross its side and moves its paddle there. How fast it moves, how precisely it aims and how quickly it reacts depend on the skill level (§3.2).
+</details>
+
+<details open>
+<summary><b>3.2 Computer skill: Easy · Normal · Hard</b></summary>
+
+> **Example.** A child plays on **Easy**; an experienced player picks **Hard**. In the menu, tap the level under *Computer skill* before starting. The choice is remembered on the device and shown on the *READY?* panel (`Computer level: Hard`).
+
+In an online game the level chosen by the **host** applies, because the host's phone runs the CPU seats; guests see it on their *READY?* panel.
+
+**Model.** Each level changes three parameters of the same algorithm — nothing else:
+
+| Level | Max paddle speed | Aiming error (re-drawn at every bounce) | Reaction delay after each bounce |
+|---|---|---|---|
+| Easy | 260 u/s | ±55 u | 0.20 s |
+| Normal *(= behaviour of v1.0)* | 330 u/s | ±30 u | 0 s |
+| Hard | 560 u/s | ±12 u | 0 s |
+
+For scale: a paddle hit succeeds when the paddle centre is within ±53.6 u of the ball, so aiming errors above that value cause misses even with a perfectly placed paddle.
+
+**Measurement.** The levels were calibrated by simulation, not by feel. Three CPUs of the same level play each other for 60 minutes of game time (216 000 physics steps of 1/60 s, served from the real game code in headless Chromium). *Save rate* = paddle hits ÷ (paddle hits + lives lost).
+
+| Level | Saves | Misses | Save rate | 95 % CI (Wilson) | Mean rally (hits per life lost) |
+|---|---:|---:|---:|---|---:|
+| Easy | 3 709 | 419 | 89.8 % | 88.9 – 90.7 % | 8.8 |
+| Normal | 5 660 | 236 | 96.0 % | 95.5 – 96.5 % | 23.9 |
+| Hard | 6 735 | 154 | 97.8 % | 97.4 – 98.1 % | 43.7 |
+
+The confidence intervals do not overlap, so the three levels are measurably distinct; mean rally length roughly doubles or triples from one level to the next. These figures describe CPU-vs-CPU play; how a level *feels* against a human depends on that human's skill and device.
 </details>
 
 <details>
-<summary><b>3.2 Online game for up to three phones</b></summary>
+<summary><b>3.3 Online game for up to three phones</b></summary>
 
 > **Example.** Ada, Ben and Cleo are in different cities.
 > 1. Ada taps **Create game** → the field shows the code, e.g. `K7QM`.
@@ -107,7 +136,7 @@ If only Ben joins, the third side is played by the CPU. If Ben leaves, the CPU t
 </details>
 
 <details>
-<summary><b>3.3 Sharing the game code</b></summary>
+<summary><b>3.4 Sharing the game code</b></summary>
 
 **INVITE** uses, in order: the system share sheet (Web Share API) → copy to clipboard → a Telegram share link as last resort.
 
@@ -115,7 +144,7 @@ If only Ben joins, the third side is played by the CPU. If Ben leaves, the CPU t
 </details>
 
 <details>
-<summary><b>3.4 Bilingual interface (Italian / English)</b></summary>
+<summary><b>3.5 Bilingual interface (Italian / English)</b></summary>
 
 Every launch starts with a flag screen. The choice translates menus, in-game text, notices, error messages and the invitation text. It is remembered on the device and can be changed from **Lingua / Language** in the menu.
 
@@ -127,13 +156,13 @@ Every launch starts with a flag screen. The choice translates menus, in-game tex
 </details>
 
 <details>
-<summary><b>3.5 Elimination and walls</b></summary>
+<summary><b>3.6 Elimination and walls</b></summary>
 
 Each player has 5 lives. At zero, that side turns into a solid grey wall and the ball rebounds from it; the eliminated player keeps watching. The last player with lives wins; **START** begins a rematch.
 </details>
 
 <details>
-<summary><b>3.6 Credits screen inside the app</b></summary>
+<summary><b>3.7 Credits screen inside the app</b></summary>
 
 <img src="docs/img/credits.png" alt="In-app credits panel" width="300" align="right">
 
@@ -151,6 +180,8 @@ Each player has 5 lives. At zero, that side turns into a solid grey wall and the
                        └── Lingua/Language ──┘  ├──► Join (4-char code) ─────────┘       │
                                                 └──► Credits                     MENU ◄──┘
 ```
+
+In the menu, the **name** (required, max 13 characters) and the **computer skill** (Easy · Normal · Hard) apply to whatever mode you start next. Both are remembered on the device.
 
 ### 4.2 Controls
 
@@ -251,7 +282,8 @@ All values come from the constants block of `trong_mcb.html`.
 | `PL × PT` | 96 × 12 | Paddle length × thickness |
 | `BALL_R` | 8 | Ball radius |
 | `BALL_START` / `BALL_SPEEDUP` / `BALL_MAX` | 260 / ×1.05 / 760 | Serve speed, growth per contact, cap (u/s) |
-| `TOUCH_SPEED` / `KEY_SPEED` / `CPU_SPEED` | 1500 / 520 / 330 | Paddle speeds (u/s) |
+| `TOUCH_SPEED` / `KEY_SPEED` | 1500 / 520 | Human paddle speeds (u/s) |
+| `CPU_LEVELS` | easy · normal · hard | CPU speed, aiming error and reaction per level (table in §3.2) |
 | `LIVES` | 5 | Lives per player |
 | `COUNTDOWN` | 1.5 s | Pause before each serve |
 | `NET_SEND_MS` | 20 ms | Send interval (50 Hz) in both directions |
@@ -269,6 +301,7 @@ All values come from the constants block of `trong_mcb.html`.
 ```js
 // In the browser console, after starting "Play against the computer":
 seats = ["cpu", "cpu", "cpu"];   // let the CPU play all three sides (demo / testing)
+cpuLevel = "hard";               // "easy" | "normal" | "hard"
 g.lives                          // → [5, 5, 5]   remaining lives per side
 g.state                          // → "playing" | "countdown" | "stopped" | "over"
 ```
@@ -298,7 +331,8 @@ Listed so that nobody has to discover them by surprise.
 - [ ] **Anti-cheat** — the host is trusted; guest messages are sanitised and clamped, but a modified host could alter the game.
 - [ ] **Notices in mixed-language games** — notices generated by the host are sent to guests in the host's language.
 - [ ] **Accessibility** — the field is a `<canvas>` with no screen-reader description, no colour-blind palette and no reduced-motion mode.
-- [ ] **Settings** — no options for difficulty, lives, speed, sound or vibration.
+- [ ] **More settings** — computer skill is selectable; lives, ball speed, sound and vibration are not.
+- [ ] **Per-seat skill** — all CPU seats in a game share one level.
 - [ ] **Installable app (PWA)** — no manifest or service worker.
 - [ ] **Automated test suite** — this release was checked with scripted headless-Chromium runs (both languages, nine screen sizes, no JavaScript errors), but no test suite is included in the repository.
 - [ ] **Cross-browser verification** — Safari and Firefox are expected to work (standard APIs only) but were not systematically tested for this release.
@@ -344,7 +378,7 @@ Design, code, artwork, logo and documentation.
   author  = {Caretti di Madre Becheroni, Massimiliano},
   title   = {TRONG\_MCB: a three-player paddle game on a triangular field},
   year    = {2026},
-  version = {1.0.0},
+  version = {1.1.0},
   url     = {https://github.com/massimiliano-caretti/TRONG_MCB},
   license = {MIT}
 }

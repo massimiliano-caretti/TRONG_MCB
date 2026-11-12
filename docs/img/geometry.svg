@@ -68,7 +68,7 @@
 
     <text x="664" y="536" fill="#e6ebf7" font-weight="700">5 · Lives and walls</text>
     <text x="664" y="558" fill="#8c99b8" font-size="14">5 lives each. At 0 the side becomes a solid wall.</text>
-    <text x="664" y="578" fill="#8c99b8" font-size="14">Last player with lives wins. CPU paddles move at 330 u/s</text>
-    <text x="664" y="598" fill="#8c99b8" font-size="14">toward the predicted impact ± a random error of up to 30 u.</text>
+    <text x="664" y="578" fill="#8c99b8" font-size="14">Last player with lives wins. CPU paddles aim at the</text>
+    <text x="664" y="598" fill="#8c99b8" font-size="14">predicted impact; speed, error and reaction depend on skill.</text>
   </g>
 </svg>

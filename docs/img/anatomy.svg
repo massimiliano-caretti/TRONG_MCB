@@ -5,7 +5,7 @@
   </defs>
   <rect width="1200" height="760" rx="24" fill="#0d1221"/>
   <text x="40" y="58" fill="#e6ebf7" font-size="28" font-weight="800">Anatomy — one file, four layers</text>
-  <text x="40" y="88" fill="#8c99b8" font-size="16">trong_mcb.html · 1 243 lines · ~188 KB · no build step, no runtime downloads (line numbers refer to v1.0)</text>
+  <text x="40" y="88" fill="#8c99b8" font-size="16">trong_mcb.html · 1 307 lines · ~187 KB · no build step, no runtime downloads (line numbers refer to v1.0)</text>
 
   <!-- File strip -->
   <g font-size="14">
@@ -13,35 +13,35 @@
     <text x="190" y="146" text-anchor="middle" fill="#8c99b8" font-size="13" letter-spacing="2">FILE LAYOUT</text>
 
     <rect x="58" y="160" width="264" height="70" rx="10" fill="#1d2747" stroke="#334061"/>
-    <text x="74" y="186" fill="#e6ebf7" font-weight="700">&lt;head&gt;  · L1–176</text>
+    <text x="74" y="186" fill="#e6ebf7" font-weight="700">&lt;head&gt;  · L1–193</text>
     <text x="74" y="208" fill="#8c99b8" font-size="13">meta, inline icons (data-URI), CSS</text>
 
     <rect x="58" y="240" width="264" height="80" rx="10" fill="#2b1f12" stroke="#ff8c33"/>
-    <text x="74" y="266" fill="#ff8c33" font-weight="700">Vendored PeerJS · L177–185</text>
+    <text x="74" y="266" fill="#ff8c33" font-weight="700">Vendored PeerJS · L194–202</text>
     <text x="74" y="288" fill="#c9b49c" font-size="13">PeerJS 1.5.4 (MIT) + bundled deps</text>
     <text x="74" y="306" fill="#c9b49c" font-size="13">third-party · unmodified · minified</text>
 
     <rect x="58" y="330" width="264" height="80" rx="10" fill="#1d2747" stroke="#c58bff"/>
-    <text x="74" y="356" fill="#c58bff" font-weight="700">DOM overlay · L190–340</text>
+    <text x="74" y="356" fill="#c58bff" font-weight="700">DOM overlay · L207–363</text>
     <text x="74" y="378" fill="#8c99b8" font-size="13">4 panels: Language · Menu ·</text>
     <text x="74" y="396" fill="#8c99b8" font-size="13">Credits · Busy (connecting)</text>
 
     <rect x="58" y="420" width="264" height="282" rx="10" fill="#10303a" stroke="#40d9f2"/>
-    <text x="74" y="446" fill="#40d9f2" font-weight="700">Game script · L342–1241</text>
+    <text x="74" y="446" fill="#40d9f2" font-weight="700">Game script · L365–1305</text>
     <text x="74" y="468" fill="#9fc9d3" font-size="13">vanilla ES2018, "use strict",</text>
     <text x="74" y="486" fill="#9fc9d3" font-size="13">no framework, no modules,</text>
     <text x="74" y="504" fill="#9fc9d3" font-size="13">12 sections (see right) →</text>
     <rect x="74" y="526" width="232" height="10" rx="5" fill="#40d9f2" opacity="0.25"/>
-    <rect x="74" y="526" width="35" height="10" rx="5" fill="#40d9f2"/>
-    <text x="74" y="556" fill="#9fc9d3" font-size="12">I18N dictionary ≈ 15 % of script</text>
+    <rect x="74" y="526" width="32" height="10" rx="5" fill="#40d9f2"/>
+    <text x="74" y="556" fill="#9fc9d3" font-size="12">I18N dictionary ≈ 14 % of script</text>
     <rect x="74" y="570" width="232" height="10" rx="5" fill="#40d9f2" opacity="0.25"/>
-    <rect x="74" y="570" width="49" height="10" rx="5" fill="#40d9f2"/>
-    <text x="74" y="600" fill="#9fc9d3" font-size="12">Networking ≈ 21 %</text>
+    <rect x="74" y="570" width="46" height="10" rx="5" fill="#40d9f2"/>
+    <text x="74" y="600" fill="#9fc9d3" font-size="12">Networking ≈ 20 %</text>
     <rect x="74" y="614" width="232" height="10" rx="5" fill="#40d9f2" opacity="0.25"/>
     <rect x="74" y="614" width="42" height="10" rx="5" fill="#40d9f2"/>
     <text x="74" y="644" fill="#9fc9d3" font-size="12">Rendering ≈ 18 %</text>
     <rect x="74" y="658" width="232" height="10" rx="5" fill="#40d9f2" opacity="0.25"/>
-    <rect x="74" y="658" width="17" height="10" rx="5" fill="#40d9f2"/>
+    <rect x="74" y="658" width="16" height="10" rx="5" fill="#40d9f2"/>
     <text x="74" y="688" fill="#9fc9d3" font-size="12">Physics ≈ 7 %</text>
   </g>
 
@@ -58,17 +58,17 @@
     <!-- MODEL -->
     <g>
       <rect x="412" y="156" width="236" height="78" rx="12" fill="#161d33" stroke="#334061" stroke-width="2"/>
-      <text x="428" y="182" fill="#e6ebf7" font-weight="700">Constants</text><text x="632" y="182" fill="#8c99b8" font-size="12" text-anchor="end">L477</text>
+      <text x="428" y="182" fill="#e6ebf7" font-weight="700">Constants</text><text x="632" y="182" fill="#8c99b8" font-size="12" text-anchor="end">L504</text>
       <text x="428" y="204" fill="#8c99b8" font-size="13">field 600×820, lives 5,</text>
-      <text x="428" y="222" fill="#8c99b8" font-size="13">speeds, network timings</text>
+      <text x="428" y="222" fill="#8c99b8" font-size="13">speeds, CPU skill levels</text>
 
       <rect x="412" y="246" width="236" height="78" rx="12" fill="#161d33" stroke="#334061" stroke-width="2"/>
-      <text x="428" y="272" fill="#e6ebf7" font-weight="700">Triangle geometry</text><text x="632" y="272" fill="#8c99b8" font-size="12" text-anchor="end">L509</text>
+      <text x="428" y="272" fill="#e6ebf7" font-weight="700">Triangle geometry</text><text x="632" y="272" fill="#8c99b8" font-size="12" text-anchor="end">L546</text>
       <text x="428" y="294" fill="#8c99b8" font-size="13">vertices V, per-side normal n,</text>
       <text x="428" y="312" fill="#8c99b8" font-size="13">tangent t, view rotation</text>
 
       <rect x="412" y="336" width="236" height="96" rx="12" fill="#161d33" stroke="#334061" stroke-width="2"/>
-      <text x="428" y="362" fill="#e6ebf7" font-weight="700">Game state  g</text><text x="632" y="362" fill="#8c99b8" font-size="12" text-anchor="end">L574</text>
+      <text x="428" y="362" fill="#e6ebf7" font-weight="700">Game state  g</text><text x="632" y="362" fill="#8c99b8" font-size="12" text-anchor="end">L611</text>
       <text x="428" y="384" fill="#8c99b8" font-size="13">pads[3], lives[3], ball, state,</text>
       <text x="428" y="402" fill="#8c99b8" font-size="13">mode, seats[3], names[3]</text>
       <text x="428" y="420" fill="#8c99b8" font-size="13">→ one plain object, serialisable</text>
@@ -77,38 +77,38 @@
     <!-- BEHAVIOUR -->
     <g>
       <rect x="672" y="156" width="236" height="96" rx="12" fill="#161d33" stroke="#40d9f2" stroke-width="2"/>
-      <text x="688" y="182" fill="#40d9f2" font-weight="700">Physics + CPU</text><text x="892" y="182" fill="#8c99b8" font-size="12" text-anchor="end">L682</text>
+      <text x="688" y="182" fill="#40d9f2" font-weight="700">Physics + CPU</text><text x="892" y="182" fill="#8c99b8" font-size="12" text-anchor="end">L724</text>
       <text x="688" y="204" fill="#8c99b8" font-size="13">sub-stepped ball, paddle hits,</text>
       <text x="688" y="222" fill="#8c99b8" font-size="13">random re-aim, lives; CPU</text>
       <text x="688" y="240" fill="#8c99b8" font-size="13">predicts impact ± error</text>
 
       <rect x="672" y="264" width="236" height="96" rx="12" fill="#161d33" stroke="#ff8c33" stroke-width="2"/>
-      <text x="688" y="290" fill="#ff8c33" font-weight="700">Network</text><text x="892" y="290" fill="#8c99b8" font-size="12" text-anchor="end">L828</text>
+      <text x="688" y="290" fill="#ff8c33" font-weight="700">Network</text><text x="892" y="290" fill="#8c99b8" font-size="12" text-anchor="end">L872</text>
       <text x="688" y="312" fill="#8c99b8" font-size="13">host: authoritative, 50 Hz</text>
       <text x="688" y="330" fill="#8c99b8" font-size="13">snapshots · guest: sends paddle,</text>
       <text x="688" y="348" fill="#8c99b8" font-size="13">extrapolates ball between frames</text>
 
       <rect x="672" y="372" width="236" height="60" rx="12" fill="#161d33" stroke="#334061" stroke-width="2"/>
-      <text x="688" y="398" fill="#e6ebf7" font-weight="700">Main loop</text><text x="892" y="398" fill="#8c99b8" font-size="12" text-anchor="end">L1215</text>
+      <text x="688" y="398" fill="#e6ebf7" font-weight="700">Main loop</text><text x="892" y="398" fill="#8c99b8" font-size="12" text-anchor="end">L1279</text>
       <text x="688" y="418" fill="#8c99b8" font-size="13">requestAnimationFrame, dt ≤ 1/30 s</text>
     </g>
 
     <!-- IO -->
     <g>
       <rect x="932" y="156" width="228" height="60" rx="12" fill="#161d33" stroke="#334061" stroke-width="2"/>
-      <text x="948" y="182" fill="#e6ebf7" font-weight="700">Input</text><text x="1144" y="182" fill="#8c99b8" font-size="12" text-anchor="end">L749</text>
+      <text x="948" y="182" fill="#e6ebf7" font-weight="700">Input</text><text x="1144" y="182" fill="#8c99b8" font-size="12" text-anchor="end">L793</text>
       <text x="948" y="202" fill="#8c99b8" font-size="13">pointer/touch drag, keyboard</text>
 
       <rect x="932" y="228" width="228" height="60" rx="12" fill="#161d33" stroke="#334061" stroke-width="2"/>
-      <text x="948" y="254" fill="#e6ebf7" font-weight="700">Rendering</text><text x="1144" y="254" fill="#8c99b8" font-size="12" text-anchor="end">L529 · L1049</text>
+      <text x="948" y="254" fill="#e6ebf7" font-weight="700">Rendering</text><text x="1144" y="254" fill="#8c99b8" font-size="12" text-anchor="end">L566 · L1106</text>
       <text x="948" y="274" fill="#8c99b8" font-size="13">2D canvas, HiDPI, letterboxed</text>
 
       <rect x="932" y="300" width="228" height="60" rx="12" fill="#161d33" stroke="#334061" stroke-width="2"/>
-      <text x="948" y="326" fill="#e6ebf7" font-weight="700">Sound + haptics</text><text x="1144" y="326" fill="#8c99b8" font-size="12" text-anchor="end">L549</text>
+      <text x="948" y="326" fill="#e6ebf7" font-weight="700">Sound + haptics</text><text x="1144" y="326" fill="#8c99b8" font-size="12" text-anchor="end">L586</text>
       <text x="948" y="346" fill="#8c99b8" font-size="13">WebAudio beeps, vibration</text>
 
       <rect x="932" y="372" width="228" height="60" rx="12" fill="#161d33" stroke="#c58bff" stroke-width="2"/>
-      <text x="948" y="398" fill="#c58bff" font-weight="700">I18N + UI</text><text x="1144" y="398" fill="#8c99b8" font-size="12" text-anchor="end">L346 · L1018</text>
+      <text x="948" y="398" fill="#c58bff" font-weight="700">I18N + UI</text><text x="1144" y="398" fill="#8c99b8" font-size="12" text-anchor="end">L369 · L1063</text>
       <text x="948" y="418" fill="#8c99b8" font-size="13">IT / EN, panels, credits</text>
     </g>
 

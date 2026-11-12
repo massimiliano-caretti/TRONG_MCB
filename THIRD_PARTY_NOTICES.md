@@ -1,7 +1,7 @@
 # Third-party notices
 
 `trong_mcb.html` embeds, unmodified and minified, the browser build of **PeerJS 1.5.4**
-(lines 177–185 of the file). That build bundles the packages listed below.
+(lines 194–202 of the file). That build bundles the packages listed below.
 Each component remains under its own license; all of them are permissive and
 compatible with the MIT License used by TRONG_MCB.
 

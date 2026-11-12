@@ -32,7 +32,7 @@
     <path d="M568 160 L 592 160" stroke="#8c99b8" stroke-width="2" marker-end="url(#a)"/>
     <rect x="592" y="112" width="210" height="96" rx="12" fill="#161d33" stroke="#40d9f2" stroke-width="2"/>
     <text x="697" y="138" text-anchor="middle" fill="#e6ebf7" font-weight="700">simulate(dt)</text>
-    <text x="608" y="160" fill="#8c99b8" font-size="12">• CPU seats move (330 u/s)</text>
+    <text x="608" y="160" fill="#8c99b8" font-size="12">• CPU seats move (per skill level)</text>
     <text x="608" y="178" fill="#8c99b8" font-size="12">• countdown → serve()</text>
     <text x="608" y="196" fill="#8c99b8" font-size="12">• stepBall: n sub-steps ≤ 4 u each</text>
     <path d="M802 160 L 826 160" stroke="#8c99b8" stroke-width="2" marker-end="url(#a)"/>
